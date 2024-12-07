@@ -20,11 +20,11 @@
 
 declare(strict_types=1);
 
-namespace czechpmdevs\imageonmap;
+namespace NuhDev\img-mv;
 
-use czechpmdevs\imageonmap\command\ImageCommand;
-use czechpmdevs\imageonmap\image\BlankImage;
-use czechpmdevs\imageonmap\utils\PermissionDeniedException;
+use NuhDev\img-mv\command\ImageCommand;
+use NuhDev\img-mv\image\BlankImage;
+use NuhDev\img-mv\utils\PermissionDeniedException;
 use pocketmine\data\bedrock\item\ItemTypeNames;
 use pocketmine\data\bedrock\item\SavedItemData;
 use pocketmine\event\Listener;
