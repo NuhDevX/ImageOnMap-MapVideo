@@ -69,11 +69,17 @@ trait DataProviderTrait {
 	 */
 	public function saveCachedMaps(string $path): void {
 		$serializer = new BigEndianNbtSerializer();
-		foreach($this->cachedMaps as $id => $map) {
-			if(!file_put_contents($file = "$path/map_$id.dat", $serializer->write(new TreeRoot($map->save())))) {
-				throw new PermissionDeniedException("Could not access file $file");
+                foreach($this->cachedMaps as $id => $map) {
+                 $file = "$path/map_$id.dat";
+      
+                        if (file_exists($file)) {
+                        continue;
 			}
-		}
+			
+                   if (!file_put_contents($file, $serializer->write(new TreeRoot($map->save())))) {
+                       throw new PermissionDeniedException("Cannot access file $file");
+                    }
+              }
 	}
 
 	/**
