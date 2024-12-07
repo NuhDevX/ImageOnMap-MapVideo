@@ -39,7 +39,7 @@ use function array_key_exists;
 use function extension_loaded;
 use function mkdir;
 
-class ImageOnMap extends PluginBase implements Listener {
+class Main extends PluginBase implements Listener {
 	use DataProviderTrait;
 
 	private static ImageOnMap $instance;
@@ -100,19 +100,28 @@ class ImageOnMap extends PluginBase implements Listener {
 	}
 
 	public function onDataPacketReceive(DataPacketReceiveEvent $event): void {
-		$packet = $event->getPacket();
-		if(!$packet instanceof MapInfoRequestPacket) {
-			return;
-		}
+           $packet = $event->getPacket();
 
-		if(!array_key_exists($packet->mapId, $this->cachedMaps)) {
-			$event->getOrigin()->sendDataPacket(BlankImage::get()->getPacket($packet->mapId));
-			$this->getLogger()->debug("Unknown map id $packet->mapId received from {$event->getOrigin()->getDisplayName()}");
-			return;
-		}
+           if (!$packet instanceof MapInfoRequestPacket) {
+           return;
+           }
 
-		$event->getOrigin()->sendDataPacket($this->getCachedMap($packet->mapId)->getPacket($packet->mapId));
-	}
+          $origin = $event->getOrigin();
+
+          if ($origin->getPlayer() !== null && $packet->mapId == FilledMap::BLANK_MAP_ID) {
+          $origin->sendDataPacket(Utils::getBlankImagePacket());
+          return;
+           }
+     
+           if (!array_key_exists($packet->mapId, $this->cachedMaps)) {
+           $origin->sendDataPacket(BlankImage::get()->getPacket($packet->mapId));
+           $this->getLogger()->debug("Unknown map id $packet->mapId received from {$origin->getDisplayName()}");
+           return;
+           }
+
+         $origin->sendDataPacket($this->getCachedMap($packet->mapId)->getPacket($packet->mapId));
+        }
+
 
 	/**
 	 * @internal
