@@ -1,7 +1,6 @@
 <?php
 namespace czechpmdevs\imageonmap\utils;
 use GdImage;
-use GifFrameExtractor\GifFrameExtractor;
 use InvalidArgumentException;
 use czechpmdevs\imageonmap\item\FilledMap;
 use pocketmine\color\Color;
