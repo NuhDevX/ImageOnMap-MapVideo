@@ -25,6 +25,7 @@ namespace czechpmdevs\imageonmap;
 use czechpmdevs\imageonmap\command\ImageCommand;
 use czechpmdevs\imageonmap\image\BlankImage;
 use czechpmdevs\imageonmap\utils\PermissionDeniedException;
+use czechpmdevs\imageonmap\utils\CustomMapItemDataPacket;
 use pocketmine\data\bedrock\item\ItemTypeNames;
 use pocketmine\data\bedrock\item\SavedItemData;
 use pocketmine\event\Listener;
@@ -35,6 +36,7 @@ use pocketmine\plugin\DisablePluginException;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\world\format\io\GlobalItemDataHandlers;
+use pocketmine\network\mcpe\protocol\PacketPool;
 use function array_key_exists;
 use function extension_loaded;
 use function mkdir;
@@ -57,7 +59,7 @@ class Main extends PluginBase implements Listener {
 		@mkdir($this->getDataFolder() . "data");
 		@mkdir($this->getDataFolder() . "images");
     
-    PacketPool::getInstance()->registerPacket(new CustomMapItemDataPacket());
+                PacketPool::getInstance()->registerPacket(new CustomMapItemDataPacket());
 
 		try {
 			$this->loadCachedMaps($this->getDataFolder() . "data");
