@@ -1,7 +1,7 @@
 <?php
 namespace czechpmdevs\imageonmap\video;
 
-use czechpmdevs\imageonmap\util\CustomMapItemDataPacket;
+use czechpmdevs\imageonmap\utils\CustomMapItemDataPacket;
 
 
 /**
