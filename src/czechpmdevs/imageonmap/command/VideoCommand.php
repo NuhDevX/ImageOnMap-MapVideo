@@ -28,7 +28,7 @@ class VideoCommand extends Command implements PluginOwned{
         return Main::getInstance();
     }
 
-    public function __construct(string $name){
+    public function __construct(){
         parent::__construct("video", "Play a video on a map", "/$name <name>");
         $this->setPermission("video.command");
     }
