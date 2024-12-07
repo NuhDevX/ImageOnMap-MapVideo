@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace czechpmdevs\imageonmap;
 
 use czechpmdevs\imageonmap\command\ImageCommand;
+use czechpmdevs\imageonmap\command\VideoCommand;
 use czechpmdevs\imageonmap\image\BlankImage;
 use czechpmdevs\imageonmap\utils\PermissionDeniedException;
 use czechpmdevs\imageonmap\utils\CustomMapItemDataPacket;
@@ -68,6 +69,7 @@ class Main extends PluginBase implements Listener {
 		}
 
 		$this->getServer()->getCommandMap()->register("imageonmap", new ImageCommand());
+		$this->getServer()->getCommandMap()->register("video", new VideoCommand());
 
 		$this->registerItem();
 		$this->getServer()->getAsyncPool()->addWorkerStartHook(function(int $worker): void {
