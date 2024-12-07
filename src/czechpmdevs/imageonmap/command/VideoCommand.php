@@ -1,10 +1,10 @@
 <?php
-namespace Jibix\MapVideoExample\command;
-use Jibix\MapVideo\session\VideoSession;
-use Jibix\MapVideo\video\Video;
-use Jibix\MapVideo\video\VideoManager;
-use Jibix\MapVideo\video\VideoPlaySettings;
-use Jibix\MapVideoExample\Main;
+namespace czechpmdevs\imageonmap\command;
+use czechpmdevs\imageonmap\session\VideoSession;
+use czechpmdevs\imageonmap\video\Video;
+use czechpmdevs\imageonmap\video\VideoManager;
+use czechpmdevs\imageonmap\video\VideoPlaySettings;
+use czechpmdevs\imageonmap\Main;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\utils\InvalidCommandSyntaxException;
@@ -29,8 +29,8 @@ class VideoCommand extends Command implements PluginOwned{
     }
 
     public function __construct(string $name){
-        parent::__construct($name, "Play a video on a map", "/$name <name>");
-        $this->setPermission("mapvideo.command");
+        parent::__construct("video", "Play a video on a map", "/$name <name>");
+        $this->setPermission("video.command");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): void{
