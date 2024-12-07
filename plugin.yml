@@ -1,10 +1,9 @@
-name: ImageOnMap
+name: ImageOnMap-MapVideo
 api: 5.0.0
 version: 1.1.1
-main: czechpmdevs\imageonmap\ImageOnMap
-description: PocketMine plugin which allows to add images to map items
-author: CzechPMDevs
-authors: [VixikHD]
+main: NuhDev\img-mv\Main
+description: PocketMine plugin which allows to add images to map items and playing video on maps to
+author: "ImageOnMap Creator: CzechPMDevs and VixikHD\nMapVideo Creator: Jibix\nRemake: NuhDev"
 
 permissions:
   imageonmap.command:
