@@ -34,6 +34,10 @@ class FilledMap extends Item {
 		return $this;
 	}
 
+	public function getMapId(): int{
+                return $this->uuid;
+	}
+
 	protected function serializeCompoundTag(CompoundTag $tag): void {
 		parent::serializeCompoundTag($tag);
 		$tag->setLong("map_uuid", $this->uuid);
